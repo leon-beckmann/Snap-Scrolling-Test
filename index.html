@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Snap Scroll — Minimal</title>
+
+    <style>
+        /* only what's required for snap scrolling */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { height: 100%; margin: 0; }
+        .scroll-root {
+            height: 100vh;
+            overflow-y: auto;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        .intro {
+            height: 100vh;
+            scroll-snap-align: start;
+            display: grid;
+            place-items: center; /* optional for vertical centering of intro content */
+            background-color: rgb(216, 216, 216);
+        }
+        .content {
+            scroll-snap-align: start;
+        }
+        /* Has nothing to do with the snap scrolling */
+        .content-block {
+            min-height: 500px; /* ensure enough height for scrolling */
+            padding: 20px;
+        }
+        .changer {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <a class="changer" href="no_snap.html">change to smooth</a>
+    <main class="scroll-root" aria-label="Page">
+        <section class="intro" aria-label="Intro">
+            <div>
+                <h1>Welcome</h1>
+                <p>Intro container — full viewport. Scroll down to the content.</p>
+            </div>
+        </section>
+
+        <section class="content" aria-label="Main content">
+            <section class="content-block">
+                <h2>Hero</h2>
+                <p>Scrolling content area — multiple sections below</p>
+            </section>
+
+            <section class="content-block">
+                <h2>Section One</h2>
+                <p>Some sample text to make the page scroll. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.</p>
+            </section>
+
+            <section class="content-block">
+                <h2>Section Two</h2>
+                <p>More content. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+            </section>
+
+            <section class="content-block">
+                <h2>Section Three</h2>
+                <p>Even more content to ensure the page is longer than the viewport. Cras mattis consectetur purus sit amet fermentum.</p>
+            </section>
+
+            <section class="content-block">
+                <h2>Section Four</h2>
+                <p>Final section. You can keep adding sections as needed.</p>
+            </section>
+        </section>
+    </main>
+</body>
+</html>
