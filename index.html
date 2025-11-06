@@ -8,10 +8,12 @@
     <style>
         /* only what's required for snap scrolling */
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        html, body { height: 100%;}
+        html, body { 
+            height: 100vh;
+        }
         .scroll-root {
-            height: 100%;
-            overflow-y: scroll; /* Changed from auto to scroll */
+            height: 100vh;
+            overflow-y: auto;
             scroll-snap-type: y mandatory;
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
@@ -24,8 +26,11 @@
             background-color: rgb(216, 216, 216);
         }
         .content {
+            height: 100vh;
             scroll-snap-align: start;
+            overflow-y: scroll;
         }
+
 
 
         /* Has nothing to do with the snap scrolling */
@@ -51,7 +56,7 @@
 <body>
     <div class="changer">
         <a href="no_snap.html">change to smooth</a>
-        <p>v2</p>
+        <p>v3</p>
     </div>
     <main class="scroll-root" aria-label="Page">
         <section class="intro" aria-label="Intro">
