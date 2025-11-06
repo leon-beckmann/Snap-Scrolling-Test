@@ -20,16 +20,21 @@
             height: 100vh;
             scroll-snap-align: start;
             display: grid;
-            place-items: center; /* optional for vertical centering of intro content */
+            place-items: center;
             background-color: rgb(216, 216, 216);
         }
         .content {
             scroll-snap-align: start;
+            height: auto; /* Erlaubt der Content-Section ihre natürliche Höhe */
+            overflow-y: auto; /* Ermöglicht Scrolling innerhalb der Content-Section */
         }
+
+
         /* Has nothing to do with the snap scrolling */
         .content-block {
-            min-height: 500px; /* ensure enough height for scrolling */
+            min-height: 500px;
             padding: 20px;
+            scroll-snap-align: none; /* Verhindert Snap-Effekte innerhalb der Content-Section */
         }
         .changer {
             position: fixed;
