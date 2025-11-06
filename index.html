@@ -14,6 +14,7 @@
             overflow-y: auto;
             scroll-snap-type: y mandatory;
             scroll-behavior: smooth;
+            overscroll-behavior-y: contain; /* Verhindert das "Über-Scrollen" auf mobilen Geräten */
             -webkit-overflow-scrolling: touch;
         }
         .intro {
@@ -42,14 +43,20 @@
             right: 10px;
             background: #000;
             color: #fff;
-            text-decoration: none;
             font-family: sans-serif;
             z-index: 1000;
+        }
+        a{
+            color: #fff;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
-    <a class="changer" href="no_snap.html">change to smooth</a>
+    <div class="changer">
+        <a href="no_snap.html">change to smooth</a>
+        <p>v1</p>
+    </div>
     <main class="scroll-root" aria-label="Page">
         <section class="intro" aria-label="Intro">
             <div>
