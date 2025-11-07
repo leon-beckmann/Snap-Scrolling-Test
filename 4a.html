@@ -9,27 +9,26 @@
         /* only what's required for snap scrolling */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html, body { 
-            height: 100vh;
+            height: 100%;
+            overflow: hidden;
         }
         .scroll-root {
-            height: 100vh;
+            height: 100dvh;
+            overflow-x: hidden;
             overflow-y: auto;
             scroll-snap-type: y mandatory;
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
         }
         .intro {
-            height: 100vh;
+            height: 100dvh;
             scroll-snap-align: start;
             display: grid;
             place-items: center;
             background-color: rgb(216, 216, 216);
         }
         .content {
-            height: 100vh;
             scroll-snap-align: start;
-            overflow-y: scroll;
-            overscroll-behavior-y: auto;
         }
 
 
@@ -62,8 +61,8 @@
         <section class="intro" aria-label="Intro" id="intro">
             <div>
                 <h1>4a</h1>
-                <p>100vh both containers, vertical overflow on content</p>
-                <p>change focus when scrolling down on the intro</p>
+                <p>100dvh only on the wrapper</p>
+                <p>dvh instead of vh</p>
             </div>
         </section>
 
