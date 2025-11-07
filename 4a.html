@@ -21,7 +21,8 @@
             height: 100dvh;
             overflow-x: hidden;
             overflow-y: auto;
-            scroll-snap-type: y proximity;
+
+            scroll-snap-type: y mandatory;
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
         }
@@ -98,5 +99,43 @@
             </section>
         </section>
     </main>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const scrollRoot = document.getElementById('scroll-root');
+            const intro = document.getElementById('intro');
+
+            // This is the "magic" part. We create an observer
+            // to watch when the 'intro' section enters or leaves the screen.
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    // We're only watching one element (intro), so we just take the first entry.
+                    const [entry] = entries;
+
+                    if (entry.isIntersecting) {
+                        // The intro IS on-screen.
+                        // We are at the top. We NEED snap-scrolling.
+                        console.log('Intro is visible: Snap ON');
+                        scrollRoot.style.scrollSnapType = 'y mandatory';
+                    } else {
+                        // The intro is NOT on-screen.
+                        // We have "escaped" into the content. Turn snap OFF.
+                        console.log('Intro is hidden: Snap OFF (Free scroll!)');
+                        scrollRoot.style.scrollSnapType = 'none';
+                    }
+                },
+                {
+                    // This is the "trigger". 
+                    // It fires when the element is 50% in/out of view.
+                    // This prevents it from triggering too early.
+                    threshold: 0.5 
+                }
+            );
+
+            // Tell the observer to start watching the 'intro' section
+            observer.observe(intro);
+        });
+    </script>
 </body>
 </html>
