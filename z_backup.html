@@ -8,11 +8,9 @@
     <style>
         /* only what's required for snap scrolling */
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        html, body { 
-            height: 100vh;
-        }
+        html, body { height: 100%;}
         .scroll-root {
-            height: 100vh;
+            height: 100%;
             overflow-y: auto;
             scroll-snap-type: y mandatory;
             scroll-behavior: smooth;
@@ -28,7 +26,6 @@
         .content {
             scroll-snap-align: start;
         }
-
 
 
         /* Has nothing to do with the snap scrolling */
@@ -53,14 +50,14 @@
 </head>
 <body>
     <div class="changer">
-        <a href="no_snap.html">change to smooth</a>
-        <p>v4</p>
+        <a href="1b.html">change to smooth</a>
+        <p>v2</p>
     </div>
     <main class="scroll-root" aria-label="Page">
         <section class="intro" aria-label="Intro">
             <div>
-                <h1>1a</h1>
-                <p>100vh scroll-root, content as big as it wants</p>
+                <h1>Welcome</h1>
+                <p>100vh both containers, vertical overflow on content</p>
             </div>
         </section>
 

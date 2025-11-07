@@ -8,32 +8,24 @@
     <style>
         /* only what's required for snap scrolling */
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        html, body { 
-            height: 100vh;
-        }
-        .scroll-root {
-            height: 100vh;
-            overflow-y: auto;
-            scroll-snap-type: y mandatory;
+        html, body { height: 100%; margin: 0; }
+        /* .scroll-root {
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
-        }
+        } */
         .intro {
             height: 100vh;
             scroll-snap-align: start;
             display: grid;
-            place-items: center;
+            place-items: center; /* optional for vertical centering of intro content */
             background-color: rgb(216, 216, 216);
         }
         .content {
             scroll-snap-align: start;
         }
-
-
-
         /* Has nothing to do with the snap scrolling */
         .content-block {
-            min-height: 500px;
+            min-height: 500px; /* ensure enough height for scrolling */
             padding: 20px;
         }
         .changer {
@@ -42,25 +34,17 @@
             right: 10px;
             background: #000;
             color: #fff;
-            font-family: sans-serif;
-            z-index: 1000;
-        }
-        a{
-            color: #fff;
             text-decoration: none;
+            font-family: sans-serif;
         }
     </style>
 </head>
 <body>
-    <div class="changer">
-        <a href="no_snap.html">change to smooth</a>
-        <p>v4</p>
-    </div>
+    <a class="changer" href="2a.html">change to snap</a>
     <main class="scroll-root" aria-label="Page">
         <section class="intro" aria-label="Intro">
             <div>
-                <h1>1a</h1>
-                <p>100vh scroll-root, content as big as it wants</p>
+                <h1>2b</h1>
             </div>
         </section>
 

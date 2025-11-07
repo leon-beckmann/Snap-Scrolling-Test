@@ -26,7 +26,10 @@
             background-color: rgb(216, 216, 216);
         }
         .content {
+            height: 100vh;
             scroll-snap-align: start;
+            overflow-y: scroll;
+            overscroll-behavior-y: auto;
         }
 
 
@@ -53,18 +56,18 @@
 </head>
 <body>
     <div class="changer">
-        <a href="no_snap.html">change to smooth</a>
-        <p>v4</p>
+        <a href="3b.html">change to smooth</a>
     </div>
-    <main class="scroll-root" aria-label="Page">
-        <section class="intro" aria-label="Intro">
+    <main class="scroll-root" aria-label="Page" id="scroll-root">
+        <section class="intro" aria-label="Intro" id="intro">
             <div>
-                <h1>1a</h1>
-                <p>100vh scroll-root, content as big as it wants</p>
+                <h1>3a</h1>
+                <p>100vh both containers, vertical overflow on content</p>
+                <p>change focus when scrolling down on the intro</p>
             </div>
         </section>
 
-        <section class="content" aria-label="Main content">
+        <section class="content" aria-label="Main content" id="content">
             <section class="content-block">
                 <h2>Hero</h2>
                 <p>Scrolling content area — multiple sections below</p>
@@ -91,5 +94,23 @@
             </section>
         </section>
     </main>
+
+    <script>
+        const intro = document.getElementById('intro');
+        const content = document.getElementById('content');
+        let lastScrollY = 0;
+
+        document.addEventListener('scroll', (e) => {
+            const scrollY = window.scrollY;
+            const introHeight = intro.offsetHeight;
+            
+            if (scrollY < introHeight && scrollY > introHeight / 2 && scrollY > lastScrollY) {
+                content.focus();
+                content.scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            lastScrollY = scrollY;
+        });
+    </script>
 </body>
 </html>
