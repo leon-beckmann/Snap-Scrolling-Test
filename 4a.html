@@ -98,18 +98,28 @@
     <script>
         const intro = document.getElementById('intro');
         const content = document.getElementById('content');
-        let lastScrollY = 0;
 
-        document.addEventListener('scroll', (e) => {
-            const scrollY = window.scrollY;
+        // Funktion, um den Fokus zu wechseln
+        const handleScrollEnd = () => {
             const introHeight = intro.offsetHeight;
-            
-            if (scrollY < introHeight && scrollY > introHeight / 2 && scrollY > lastScrollY) {
+            const scrollY = window.scrollY;
+
+            if (scrollY < introHeight && scrollY > introHeight / 2) {
                 content.focus();
                 content.scrollIntoView({ behavior: 'smooth' });
             }
-            
-            lastScrollY = scrollY;
+        };
+
+        // Event-Listener für das scrollend-Event
+        document.addEventListener('scrollend', handleScrollEnd);
+
+        // Fallback für Browser, die scrollend nicht unterstützen
+        let isScrolling;
+        document.addEventListener('scroll', () => {
+            window.clearTimeout(isScrolling);
+            isScrolling = setTimeout(() => {
+                handleScrollEnd();
+            }, 100); // Timeout, um das Scrollen zu erkennen
         });
     </script>
 </body>
